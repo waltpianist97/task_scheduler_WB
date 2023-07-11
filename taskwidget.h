@@ -10,13 +10,16 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
+#include <QDebug>
+
 class TaskWidget : public QWidget {
     Q_OBJECT
 public:
-    explicit TaskWidget(QWidget *parent = nullptr,int type=0);
+    explicit TaskWidget(QWidget *parent = nullptr,int type = 0);
     int type_of_task;
+    bool isActive = false;
 
-private:
+protected:
     QPushButton *startButton;
     QProgressBar *progressBar;
     QLineEdit *text_to_print;

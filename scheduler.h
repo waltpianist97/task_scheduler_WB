@@ -5,6 +5,8 @@
 #include <QVBoxLayout>
 #include <QVector>
 #include "taskwidget.h"
+#include "filetaskwidget.h"
+
 #include <QDebug>
 class QSystemTrayIcon;
 
