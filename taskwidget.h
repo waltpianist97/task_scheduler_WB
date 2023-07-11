@@ -15,7 +15,7 @@
 class TaskWidget : public QWidget {
     Q_OBJECT
 public:
-    explicit TaskWidget(QWidget *parent = nullptr,int type = 0);
+    TaskWidget(QWidget *parent = nullptr,int type = 0);
     int type_of_task;
     bool isActive = false;
 
@@ -30,8 +30,6 @@ protected:
 
 private slots:
     void on_button_clicked();
-    //void re_enable_button();
-    //void updateProgressBar(int value);
     void remove_task();
 
 

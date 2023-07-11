@@ -5,15 +5,17 @@
 #include <map>
 #include <QDirIterator>
 #include <unistd.h>
-#define TOT_DURATION 20000 // in ms
+#define TOT_DURATION 20000 // in ms, durata complessiva dell'esecuzione del task
 
+// durata, in ms, del "clock" per ogni task, configurabile
 std::map<int, int> widget_to_duration = {
-    {0, 50},
     {1, 1000},
     {2, 2000}
 };
 
 TaskWidget::TaskWidget(QWidget *parent,int type) : QWidget(parent) {
+    /** metodo costruttore del task widget **/
+
     startButton = new QPushButton("Start", this);
     type_of_task = type;
     QHBoxLayout *layout = new QHBoxLayout(this);
@@ -23,14 +25,14 @@ TaskWidget::TaskWidget(QWidget *parent,int type) : QWidget(parent) {
         progressBar = new QProgressBar(this);
         progressBar->setRange(0, 100);
         deleteWidgetButton = new QPushButton("X",this);
-        //create the layout
+        //layout
         layout->addWidget(startButton);
         layout->addWidget(progressBar);
         layout->addWidget(deleteWidgetButton);
         layout->setContentsMargins(0, 0, 0, 0);
         setLayout(layout);
-        // Connect signals to slots
-        connect(deleteWidgetButton, SIGNAL(clicked()), this, SLOT(remove_task())); // Connect to remove_task() slot
+        // Connessione segnali e slots
+        connect(deleteWidgetButton, SIGNAL(clicked()), this, SLOT(remove_task()));
 
     }
 
@@ -38,13 +40,13 @@ TaskWidget::TaskWidget(QWidget *parent,int type) : QWidget(parent) {
     if(type_of_task==1){
         text_to_print = new QLineEdit(this);
         label = new QLabel("Enter text",this);
-        //create the layout
+        //layout
         layout->addWidget(startButton);
         layout->addWidget(label);
         layout->addWidget(text_to_print);
         layout->setContentsMargins(0, 0, 0, 0);
         setLayout(layout);
-        // Connect signals to slots
+        // Connessione segnali e slots
         connect(startButton, SIGNAL(clicked()), this, SLOT(on_button_clicked()));
 
     }
@@ -67,7 +69,7 @@ TaskWidget::TaskWidget(QWidget *parent,int type) : QWidget(parent) {
 }
 
 void TaskWidget::startTask() {
-    //metodo che gestisce il task
+    /** metodo che gestisce il task **/
     if(this->type_of_task==1){
        qInfo()<<this->text_to_print->text();
     }
