@@ -7,17 +7,13 @@
 #include <unistd.h>
 #define TOT_DURATION 20000 // in ms, durata complessiva dell'esecuzione del task
 
-// durata, in ms, del "clock" per ogni task, configurabile
-std::map<int, int> widget_to_duration = {
-    {1, 1000},
-    {2, 2000}
-};
 
-TaskWidget::TaskWidget(QWidget *parent,int type) : QWidget(parent) {
+TaskWidget::TaskWidget(QWidget *parent,int type,int duration) : QWidget(parent) {
     /** metodo costruttore del task widget **/
 
     startButton = new QPushButton("Start", this);
     type_of_task = type;
+    task_duration = duration;
     QHBoxLayout *layout = new QHBoxLayout(this);
 
     //Questo widget rappressenta un "default task", giusto per far vedere come aggiungere/togliere task nuovi
@@ -95,7 +91,7 @@ void TaskWidget::on_button_clicked()
     // Calcolo del numero totale di iterazioni in base alla durata complessiva e a quella del
     // singolo task
     int totalDuration = TOT_DURATION;
-    int dt = widget_to_duration[this->type_of_task];   // intervallo in ms basato sul "Clock" del singolo task
+    int dt = this->task_duration;   // intervallo in ms basato sul "Clock" del singolo task
     int numIterations = totalDuration / dt;
 
     int iteration = 0;

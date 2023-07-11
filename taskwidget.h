@@ -15,9 +15,9 @@
 class TaskWidget : public QWidget {
     Q_OBJECT
 public:
-    TaskWidget(QWidget *parent = nullptr,int type = 0);
+    TaskWidget(QWidget *parent = nullptr,int type = 0,int duration = 1000);
     int type_of_task;
-    bool isActive = false;
+    int task_duration;
 
 protected:
     QPushButton *startButton;

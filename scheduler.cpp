@@ -21,11 +21,12 @@ Scheduler::Scheduler(QWidget *parent)
     my_system_tray_icon->setIcon(QIcon(":/myappico.png"));
     my_system_tray_icon->setVisible(true);
 
-    //questi sono i task per stampare il testo in debug e controllare la presenza del file
-    //dopo aver inserito i campi nei rispettivi QLineEdit
-    TaskWidget *taskWidget_text = new TaskWidget(this,1);
+    /*questi sono i task per stampare il testo in debug e controllare la presenza del file
+    dopo aver inserito i campi nei rispettivi QLineEdit. I parametri indicano il tipo di widget
+    e la durata del task singolo. Miglioramento possibile: creare per ogni tipo di task una sottoclasse del TaskWidget di base.*/
+    TaskWidget *taskWidget_text = new TaskWidget(this,1,1000);
     mainLayout->addWidget(taskWidget_text);
-    TaskWidget *taskWidget_file = new TaskWidget(this,2);
+    TaskWidget *taskWidget_file = new TaskWidget(this,2,2000);
     mainLayout->addWidget(taskWidget_file);
 
     //questo, a scopo puramente dimostrativo, è un bottone che aggiunge
@@ -49,7 +50,7 @@ Scheduler::~Scheduler()
 
 void Scheduler::add_task(){
     /** Metodo che aggiunge un nuovo task alla GUI **/
-    TaskWidget *taskWidget = new TaskWidget(this,0);
+    TaskWidget *taskWidget = new TaskWidget(this);
     mainLayout->addWidget(taskWidget);
     taskWidgets.append(taskWidget);
 
