@@ -1,7 +1,4 @@
 #include "taskwidget.h"
-#include "taskwidget.h"
-#include <QThread>
-#include <QTimer>
 #include <QDebug>
 #include <QLabel>
 #include <QDir>
