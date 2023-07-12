@@ -18,25 +18,26 @@ public:
     TaskWidget(QWidget *parent = nullptr,int type = 0,int duration = 1000);
     int type_of_task;
     int task_duration;
-
+    QHBoxLayout *layout;
 protected:
-    QPushButton *startButton;
-    QProgressBar *progressBar;
+
+    QPushButton *start_button;
+    QProgressBar *progress_bar;
     QLineEdit *text_to_print;
     QLineEdit *path_to_check;
-    QPushButton *deleteWidgetButton;
+    QPushButton *delete_widget_button;
     QLabel *label;
-    void startTask();
+
+
 
 private slots:
     void on_button_clicked();
     void remove_task();
-
-
-signals:
-    void progressUpdated(int progress);
-    void finished();
-
+    void do_task();
+    void create_default_task();
+    void create_text_print_task();
+    void create_check_file_task();
+    void start_task();
 };
 
 #endif // TASKWIDGET_H

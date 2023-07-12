@@ -5,8 +5,6 @@
 #include <QVBoxLayout>
 #include <QVector>
 #include "taskwidget.h"
-#include "filetaskwidget.h"
-
 #include <QDebug>
 class QSystemTrayIcon;
 
@@ -21,8 +19,8 @@ public:
 private slots:
     void add_task();
 private:
-    QVBoxLayout *mainLayout;
-    QVector<TaskWidget*> taskWidgets;
+    QVBoxLayout *main_layout;
+    QVector<TaskWidget*> task_widgets;
     QSystemTrayIcon *my_system_tray_icon;
 };
 
